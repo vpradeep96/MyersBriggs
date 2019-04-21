@@ -77,12 +77,11 @@
 
 	    <form method="POST" id="textBox" action="">{% csrf_token %}
         <p style="font-size:1.5em;"></p>{{textInputField|crispy}}
-        <button class="btn btn-md btn-primary btn-block" href="/docs/4.3/components/navbar/" role="button">Submit</button>
+        
         </form><br>
 
         <form method="POST" id="twitterBox" action="">{% csrf_token %}
         <p style="font-size:1.5em;"></p>{{twitterHandleField|crispy}}
-        <button class="btn btn-md btn-primary btn-block" href="/docs/4.3/components/navbar/" role="button">Submit</button>
         </form>
 
 
@@ -90,28 +89,25 @@
 	    <div class="form-check form-check-inline">
         <form method="POST" action="">{% csrf_token %}
         <p style="font-size:1.5em;"></p>{{extraversionField|crispy}}
-        <button class="btn btn-md btn-primary btn-block" href="/docs/4.3/components/navbar/" role="button">Submit</button>
         </form>
 		</div>
 		<div class="form-check form-check-inline">
         <form method="POST" action="">{% csrf_token %}
         <p style="font-size:1.5em;"></p>{{intuitionField|crispy}}
-        <button class="btn btn-md btn-primary btn-block" href="/docs/4.3/components/navbar/" role="button">Submit</button>
         </form>
 		</div>
 		<div class="form-check form-check-inline">
         <form method="POST" action="">{% csrf_token %}
         <p style="font-size:1.5em;"></p>{{feelingField|crispy}}
-        <button class="btn btn-md btn-primary btn-block" href="/docs/4.3/components/navbar/" role="button">Submit</button>
         </form>
 		</div>
 		<div class="form-check form-check-inline">
         <form method="POST" action="">{% csrf_token %}
         <p style="font-size:1.5em;"></p>{{perceptionField|crispy}}
-        <button class="btn btn-md btn-primary btn-block" href="/docs/4.3/components/navbar/" role="button">Submit</button>
         </form>
 		</div>
     </div>
+    <button class="btn btn-md btn-primary btn-block" href="/docs/4.3/components/navbar/" role="button">Submit</button>
 
 
 </main>
