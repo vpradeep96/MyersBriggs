@@ -28,6 +28,15 @@ def home_view(request, *args, **kwargs):	# *args, **kwargs
 			twitter_field_data = twitterHandleField.cleaned_data.get('twitter_handle')
 			if twitter_field_data:
 				twitter_search = True
+		if extraversionField.is_valid():
+			extraversion_data = extraversionField.cleaned_data.get('extraversion_field')
+		if intuitionField.is_valid():
+			intuition_data = intuitionField.cleaned_data.get('intuition_field')
+		if feelingField.is_valid():
+			feeling_data = feelingField.cleaned_data.get('feeling_field')
+		if perceptionField.is_valid():
+			perception_data = perceptionField.cleaned_data.get('perception_field')
+			print(perception_data)
 
 
 

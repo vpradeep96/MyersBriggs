@@ -22,13 +22,17 @@ class TwitterHandleField(forms.Form):
 	twitter_handle = forms.CharField(label='', required=None)
 
 class ExtraversionField(forms.Form):
-	extraversion_field = forms.CharField(label='', required=None)
+	OPTIONS = (("E", "E"),("I", "I"),)
+	extraversion_field = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS, label='Extraversion/Introversion')
 
 class IntuitionField(forms.Form):
-	intuition_field = forms.CharField(label='', required=None)
+	OPTIONS = (("S", "S"),("N", "N"),)
+	intuition_field = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS, label='Sensing/Intuition')
 
 class FeelingField(forms.Form):
-	feeling_field = forms.CharField(label='', required=None)
+	OPTIONS = (("T", "T"),("F", "F"),)
+	feeling_field = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS, label='Thinking/Feeling')
 
 class PerceptionField(forms.Form):
-	perception_field = forms.CharField(label='', required=None)
+	OPTIONS = (("J", "J"),("P", "P"),)
+	perception_field = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS, label='Judging/Perceiving')
