@@ -20,3 +20,15 @@ class TextInputField(forms.Form):
 
 class TwitterHandleField(forms.Form):
 	twitter_handle = forms.CharField(label='', required=None)
+
+class ExtraversionField(forms.Form):
+	extraversion_field = forms.CharField(label='', required=None)
+
+class IntuitionField(forms.Form):
+	intuition_field = forms.CharField(label='', required=None)
+
+class FeelingField(forms.Form):
+	feeling_field = forms.CharField(label='', required=None)
+
+class PerceptionField(forms.Form):
+	perception_field = forms.CharField(label='', required=None)

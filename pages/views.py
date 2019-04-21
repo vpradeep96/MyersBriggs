@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .forms import TextInputField, TwitterHandleField
+from .forms import TextInputField, TwitterHandleField, ExtraversionField, IntuitionField, FeelingField, PerceptionField
 
 from bs4 import BeautifulSoup
 import urllib.request
@@ -11,6 +11,11 @@ def home_view(request, *args, **kwargs):	# *args, **kwargs
 
 	textInputField = TextInputField(request.POST or None)
 	twitterHandleField = TwitterHandleField(request.POST or None)
+
+	extraversionField = ExtraversionField(request.POST or None)
+	intuitionField = IntuitionField(request.POST or None)
+	feelingField = FeelingField(request.POST or None)
+	perceptionField = PerceptionField(request.POST or None)
 
 	twitter_search = False
 
@@ -27,9 +32,17 @@ def home_view(request, *args, **kwargs):	# *args, **kwargs
 
 
 
+
 	context = {
 		"textInputField":textInputField,
 		"twitterHandleField":twitterHandleField,
+		"extraversionField":extraversionField,
+		"intuitionField":intuitionField,
+		"feelingField":feelingField,
+		"perceptionField":perceptionField,
+
+
 		"twitter_search":twitter_search,
+
 	}
 	return render(request, "home_view.html", context)
