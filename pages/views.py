@@ -157,6 +157,7 @@ def home_view(request, *args, **kwargs):	# *args, **kwargs
 		"twitter_search":twitter_search,
 
 	}
+	
 	return render(request, "home_view.html", context)
 
 
