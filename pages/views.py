@@ -15,6 +15,9 @@ from keras.models import model_from_json
 
 from sklearn import linear_model
 
+import pickle
+from sklearn.externals import joblib
+
 
 client = pymongo.MongoClient('mongodb://localhost:27017')
 db = client.pymongo
