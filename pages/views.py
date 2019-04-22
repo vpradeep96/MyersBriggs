@@ -6,6 +6,14 @@ from bs4 import BeautifulSoup
 import urllib.request
 import certifi
 import pymongo
+import sklearn
+
+import keras
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.models import model_from_json
+
+from sklearn import linear_model
 
 
 client = pymongo.MongoClient('mongodb://localhost:27017')
