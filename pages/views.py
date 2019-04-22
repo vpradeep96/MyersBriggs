@@ -69,6 +69,8 @@ def home_view(request, *args, **kwargs):	# *args, **kwargs
 				
 				vectorizer = joblib.load('vectorizer1.pkl')
 				
+				xtrial = vectorizer.transform(text_field_data)
+				
 				
 				#the four models 
 				
@@ -98,7 +100,19 @@ def home_view(request, *args, **kwargs):	# *args, **kwargs
 				enc3 = joblib.load('enc3.pkl')
 				enc4 = joblib.load('enc4.pkl')
 				
-				#
+				# Outputs
+				
+				outputE = model1.predict(xtrial)
+				outputS = model2.predict(xtrial)
+				outputT = model3.predict(xtrial)
+				outputp = model4.predict(xtrial)
+				
+				# right form
+				
+				predE = enc1.inverse_transform(outputE)
+				predS = enc2.inverse_transform(outputS)
+				predT = enc3.inverse_transform(outputT)
+				predP = enc4.inverse_transform(outputP)
 				
 				
 				
