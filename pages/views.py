@@ -135,6 +135,11 @@ def home_view(request, *args, **kwargs):	# *args, **kwargs
 					"intuition_data":intuition_data,
 					"feeling_data":feeling_data,
 					"perception_data":perception_data,
+					"predE":predE,
+					"predS":predS,
+					"predT":predT,
+					"predP":predP
+					
 				}
 				return render(request, "results.html", context)
 			else:
