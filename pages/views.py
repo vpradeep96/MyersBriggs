@@ -15,6 +15,8 @@ from keras.models import model_from_json
 
 from sklearn import linear_model
 
+from sklearn.feature_extraction.text import CountVectorizer
+
 import pickle
 from sklearn.externals import joblib
 
@@ -64,6 +66,12 @@ def home_view(request, *args, **kwargs):	# *args, **kwargs
 				postos.insert_one(obj)
 			else:
 				found['posts'].append(text_field_data)
+				
+				vectorizer = CountVectorizer(min_df=0, lowercase=False)
+				
+				
+				
+				
 				obj['posts'] = found['posts']
 				hello = len(text_field_data.split(' '))
 				totalPosts = len(found['posts'])
