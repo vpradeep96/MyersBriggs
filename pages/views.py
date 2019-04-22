@@ -67,8 +67,38 @@ def home_view(request, *args, **kwargs):	# *args, **kwargs
 			else:
 				found['posts'].append(text_field_data)
 				
-				vectorizer = CountVectorizer(min_df=0, lowercase=False)
+				vectorizer = joblib.load('vectorizer1.pkl')
 				
+				
+				#the four models 
+				
+				json_file = open('model.json', 'r')
+				loaded_model_json = json_file.read()
+				json_file.close()
+				model1 = model_from_json(loaded_model_json)
+				model2 = model_from_json(loaded_model_json)
+				model3 = model_from_json(loaded_model_json)
+				model4 = model_from_json(loaded_model_json)
+				# load weights into new model
+				model1.load_weights("modely1.h5")
+				model2.load_weights("modely2.h5")
+				model3.load_weights("modely3.h5")
+				model4.load_weights("modely4.h5")
+				
+				model1.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+				model2.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+				model3.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+				model4.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+				
+				
+				#Encoders & Decoders
+				
+				enc1 = joblib.load('enc1.pkl')
+				enc2 = joblib.load('enc2.pkl')
+				enc3 = joblib.load('enc3.pkl')
+				enc4 = joblib.load('enc4.pkl')
+				
+				#
 				
 				
 				
