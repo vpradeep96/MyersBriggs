@@ -19,10 +19,10 @@
     <p class="lead">You have 2 options. Type in text into a box and we will give a rating in each of the 4 categories. You could type in a twitter handle and the last 50 tweets associated with that handle will be used to calculate a rating in each of the 4 categories.</p>
   </div>
 
-	<div id="wrapper">
+<!-- 	<div id="wrapper">
 	  <div id="left" style="text-align:center; color:white; font-size:1.8em;">Text Field</div>
 	  <div id="right" style="text-align:center; color:white; font-size:1.8em;">Twitter Handle</div>
-	</div>
+	</div> -->
 
 
 	    <form method="POST" id="textBox" action="">{% csrf_token %}
@@ -30,10 +30,6 @@
         <button class="btn btn-md btn-primary btn-block" href="/docs/4.3/components/navbar/" role="button">Submit</button>
         </form><br>
 
-        <form method="POST" id="twitterBox" action="">{% csrf_token %}
-        <p style="font-size:1.5em;"></p>{{twitterHandleField|crispy}}
-        <button class="btn btn-md btn-primary btn-block" href="/docs/4.3/components/navbar/" role="button">Submit</button>
-        </form>
 
 
 </main>

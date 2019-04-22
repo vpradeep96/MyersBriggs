@@ -16,7 +16,8 @@ from django import forms
 # 		fields = ['twitter_handle']
 
 class TextInputField(forms.Form):
-	text_field = forms.CharField(widget=forms.Textarea, label='', required=None)
+	username = forms.CharField(label='', required=None, initial="Insert Username Here")
+	text_field = forms.CharField(widget=forms.Textarea, label='', required=None, initial="Leave Your Message Here")
 	
 	OPTIONS_E = (("E", "E"),("I", "I"),)
 	extraversion_field = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS_E, label='Extraversion/Introversion')

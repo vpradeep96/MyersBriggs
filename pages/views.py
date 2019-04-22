@@ -22,23 +22,32 @@ def home_view(request, *args, **kwargs):	# *args, **kwargs
 
 	if request.method == "POST":
 		if textInputField.is_valid():
+			username_data = textInputField.cleaned_data.get('username')
 			text_field_data = textInputField.cleaned_data.get('text_field')
 			extraversion_data = textInputField.cleaned_data.get('extraversion_field')
 			intuition_data = textInputField.cleaned_data.get('intuition_field')
 			feeling_data = textInputField.cleaned_data.get('feeling_field')
 			perception_data = textInputField.cleaned_data.get('perception_field')
-			print("Text Field:", text_field_data)
-			print("Extraversion:", extraversion_data)
-			print("Intuition:", intuition_data)
-			print("Feeling:", feeling_data)
-			print("Perception:", perception_data)
+			# print("Text Field:", text_field_data)
+			# print("Extraversion:", extraversion_data)
+			# print("Intuition:", intuition_data)
+			# print("Feeling:", feeling_data)
+			# print("Perception:", perception_data)
 
 			if text_field_data:
 				twitter_search = False
-				context = {}
+				context = {
+					"username_data":username_data,
+					"text_field_data":text_field_data,
+					"extraversion_data":extraversion_data,
+					"intuition_data":intuition_data,
+					"feeling_data":feeling_data,
+					"perception_data":perception_data,
+				}
 				return render(request, "results.html", context)
 			else:
 				pass
+
 
 
 
