@@ -5,10 +5,16 @@ from .forms import TextInputField, TwitterHandleField
 from bs4 import BeautifulSoup
 import urllib.request
 import certifi
+import pymongo
+
+
+client = pymongo.MongoClient('mongodb://localhost:27017')
+db = client.pymongo
+inty = db.introversion
+postos = db.posts
 
 # Create your views here.
 def home_view(request, *args, **kwargs):	# *args, **kwargs
-
 	textInputField = TextInputField(request.POST or None)
 	twitterHandleField = TwitterHandleField(request.POST or None)
 
@@ -28,12 +34,35 @@ def home_view(request, *args, **kwargs):	# *args, **kwargs
 			intuition_data = textInputField.cleaned_data.get('intuition_field')
 			feeling_data = textInputField.cleaned_data.get('feeling_field')
 			perception_data = textInputField.cleaned_data.get('perception_field')
-			# print("Text Field:", text_field_data)
-			# print("Extraversion:", extraversion_data)
-			# print("Intuition:", intuition_data)
-			# print("Feeling:", feeling_data)
-			# print("Perception:", perception_data)
+			
 
+			obj = {
+				'username': username_data,
+				'T/F': feeling_data[0],
+				'N/S': intuition_data[0],
+				'P/J': perception_data[0],
+				'E/I': extraversion_data[0],
+			}
+			found = postos.find_one({'username': username_data})
+			if (found is None):
+				obj['posts'] = [text_field_data]
+				obj['variance'] = 0
+				obj['stdDev'] = 0
+				obj['average'] = len(text_field_data.split(' '))
+				obj['avgWordLength'] = (len(text_field_data)-obj['average'])/obj['average']
+				postos.insert_one(obj)
+			else:
+				found['posts'].append(text_field_data)
+				obj['posts'] = found['posts']
+				hello = len(text_field_data.split(' '))
+				totalPosts = len(found['posts'])
+				obj['average'] = (found['average']*totalPosts+hello)/totalPosts+1
+				obj['stdDev'] = (found['stdDev'] + (hello-obj['average']) * (hello-obj['average'])) /(totalPosts+1)
+				avgWordLength = (len(text_field_data)-obj['average'])/obj['average']
+				obj['avgWordLength'] = (avgWordLength + found['avgWordLength']*totalPosts)/totalPosts
+				obj['variance'] = obj['stdDev'] * obj['stdDev']
+				postos.replace_one({'username': username_data}, obj)
+			
 			if text_field_data:
 				twitter_search = False
 				context = {
@@ -47,14 +76,6 @@ def home_view(request, *args, **kwargs):	# *args, **kwargs
 				return render(request, "results.html", context)
 			else:
 				pass
-
-
-
-
-		if twitterHandleField.is_valid():
-			twitter_field_data = twitterHandleField.cleaned_data.get('twitter_handle')
-			if twitter_field_data:
-				twitter_search = True
 
 		"""
 		Currently the user can type in values into the boxes and 
