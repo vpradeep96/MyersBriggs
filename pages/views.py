@@ -35,7 +35,7 @@ def home_view(request, *args, **kwargs):	# *args, **kwargs
 	# intuitionField = IntuitionField(request.POST or None)
 	# feelingField = FeelingField(request.POST or None)
 	# perceptionField = PerceptionField(request.POST or None)
-	# myersBriggsTypesField = MyersBriggsTypesField(request.POST or None)
+	# m yersBriggsTypesField = MyersBriggsTypesField(request.POST or None)
 
 	twitter_search = False
 
